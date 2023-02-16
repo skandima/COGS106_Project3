@@ -6,9 +6,9 @@ class SignalDetection:
     #Class constructor
     def __init__(self, hits, misses, falseAlarms, correctRejections):
         #signal detection theory variables
-        self.hits = hits - 0.0000001 #-0.0000001 needed for problems encountered with using stats.norm.ppf
+        self.hits = hits 
         self.misses = misses
-        self.falseAlarms = falseAlarms - 0.0000001 #-0.0000001 needed for problems encountered with using stats.norm.ppf
+        self.falseAlarms = falseAlarms 
         self.correctRejections = correctRejections
         #Note: hits and false alarms only effected as they are the numerator and denominator in the rate equations
 
