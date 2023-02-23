@@ -28,3 +28,14 @@ class SignalDetection:
         z_falseAlarm = stats.norm.ppf(falseAlarm_rate)
         return -0.5*(z_hit + z_falseAlarm)
 
+    def __add__(self, other):
+        return SignalDetection(self.__hits + other.__hits, self.__misses + other.__misses, 
+                               self.__falseAlarms + other.__falseAlarms, 
+                               self.__correctRejections + other.__correctRejections)
+    
+    def __mul__(self, scalar):
+        return SignalDetection(self.__hits * scalar, self.__misses * scalar, 
+                               self.__falseAlarms * scalar, 
+                               self.__correctRejections * scalar)
+
+
