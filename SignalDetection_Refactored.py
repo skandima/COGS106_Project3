@@ -3,16 +3,16 @@ import scipy.stats as stats
 
 class SignalDetection:
     def __init__(self, hits, misses, falseAlarms, correctRejections):
-        self.hits = hits 
-        self.misses = misses
-        self.falseAlarms = falseAlarms 
-        self.correctRejections = correctRejections
+        self.__hits = hits 
+        self.__misses = misses
+        self.__falseAlarms = falseAlarms 
+        self.__correctRejections = correctRejections
 
     def hit_rate(self):
-        return self.hits / (self.hits + self.misses)
+        return self.__hits / (self.__hits + self.__misses)
 
     def falseAlarm_rate(self):
-        return self.falseAlarms / (self.falseAlarms + self.correctRejections)
+        return self.__falseAlarms / (self.__falseAlarms + self.__correctRejections)
 
     def d_prime(self):
         hit_rate = self.hit_rate()
