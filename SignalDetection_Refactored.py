@@ -1,5 +1,10 @@
 
 import scipy.stats as stats
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import norm
+
+
 
 class SignalDetection:
     def __init__(self, hits, misses, falseAlarms, correctRejections):
@@ -37,5 +42,20 @@ class SignalDetection:
         return SignalDetection(self.__hits * scalar, self.__misses * scalar, 
                                self.__falseAlarms * scalar, 
                                self.__correctRejections * scalar)
+
+    def plot_roc(self):
+        hit_rate = self.hit_rate()
+        falseAlarm_rate = self.falseAlarm_rate()
+        plt.plot([0, falseAlarm_rate, 1], [0, hit_rate, 1], 'b')
+        plt.scatter(falseAlarm_rate, hit_rate, c='r')
+        plt.xlim([0,1])
+        plt.ylim([0,1])
+        plt.xlabel('False Alarm rate')
+        plt.ylabel('Hit rate')
+        plt.title('Receiver Operating Characteristic (ROC) curve')
+        plt.show()
+
+sd = SignalDetection(10, 30, 10, 5)
+sd.plot_roc()
 
 
